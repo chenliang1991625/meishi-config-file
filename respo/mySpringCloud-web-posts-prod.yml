@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: mySpringCloud-web-posts
+
+server:
+  port: 9250

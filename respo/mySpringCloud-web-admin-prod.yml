@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: mySpringCloud-web-admin
+
+server:
+  port: 9150
