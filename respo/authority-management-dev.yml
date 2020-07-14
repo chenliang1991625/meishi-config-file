@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: authority-management
-server:
-  port: 4000

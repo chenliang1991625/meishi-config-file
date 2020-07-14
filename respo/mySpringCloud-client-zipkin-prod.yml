@@ -1,3 +1,0 @@
-spring:
-  zipkin:
-    base-url: http://192.168.75.128:9411
