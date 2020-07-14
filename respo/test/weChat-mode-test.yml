@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: weChat-mode
+server:
+  port: 3800

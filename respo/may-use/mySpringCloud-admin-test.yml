@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: mySpringCloud-admin
+
+server:
+  port: 8499
