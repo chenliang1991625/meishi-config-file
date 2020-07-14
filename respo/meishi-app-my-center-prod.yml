@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: meishi-app-my-center
+server:
+  port: 3200

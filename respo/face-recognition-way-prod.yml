@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: face-recognition-way
+server:
+  port: 3300

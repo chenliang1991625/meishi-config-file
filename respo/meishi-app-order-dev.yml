@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: meishi-app-order
+server:
+  port: 3150

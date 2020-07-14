@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: technician-side-myCenter
+server:
+  port: 3050
