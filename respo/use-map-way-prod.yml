@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: use-map-way
+server:
+  port: 3600

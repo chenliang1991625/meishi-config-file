@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: technician-side-message
+server:
+  port: 3000

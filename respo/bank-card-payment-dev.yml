@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: bank-card-payment
+server:
+  port: 3700

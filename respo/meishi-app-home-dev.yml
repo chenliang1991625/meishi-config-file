@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: meishi-app-home
+server:
+  port: 3250

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: technician-side-order
+server:
+  port: 3100
