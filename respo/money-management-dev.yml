@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: money-management
+server:
+  port: 4050
