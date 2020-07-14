@@ -1,6 +1,9 @@
 spring:
   application:
     name: mySpringCloud-admin
+    
+test:
+  git: 123
 
 server:
   port: 8499
