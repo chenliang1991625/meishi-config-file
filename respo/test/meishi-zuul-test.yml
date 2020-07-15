@@ -1,10 +1,8 @@
+server:
+  port: 8769
 spring:
   application:
     name: mySpringCloud-zuul
-
-server:
-  port: 8769
-
 zuul:
   routes:
     backend-admin:
