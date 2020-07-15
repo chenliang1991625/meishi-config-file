@@ -3,6 +3,7 @@ server:
 spring:
   application:
     name: mySpringCloud-zuul
+  #zuul路由规则
 zuul:
   routes:
     backend-admin:
