@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: ad-management
+  #数据库配置
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.0.120:3306/pc-backend-service?characterEncoding=UTF8&useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&autoReconnect=true
+    username: root
+    password: cl1991625
+server:
+  port: 9700
