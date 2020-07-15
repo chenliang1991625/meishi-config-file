@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: app-front-sso-register-service
+server:
+  port: 4100

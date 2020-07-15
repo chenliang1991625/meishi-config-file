@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: alipay-pay
+server:
+  port: 3650

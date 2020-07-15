@@ -5,7 +5,7 @@ spring:
 server:
   port: 9100
 
-fastdfs.base.url: http://192.168.75.128:8888/
+fastdfs.base.url: http://192.168.0.108:8888/
 storage:
   type: fastdfs
   fastdfs:

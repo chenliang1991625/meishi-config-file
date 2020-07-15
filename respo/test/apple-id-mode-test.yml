@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: apple-id-mode
+server:
+  port: 3900
