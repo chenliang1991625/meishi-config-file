@@ -3,12 +3,117 @@ server:
 spring:
   application:
     name: mySpringCloud-zuul
-  #zuul路由规则
+  main:
+    allow-bean-definition-overriding: true
+#    zuul路由规则
 zuul:
+  add-host-header: true
+  ignoredServices: '*'
+  retryable: true
   routes:
+    #    pc-end后台服务的路由
+    ad-management:
+      path: /pc-end/ad/**
+      stripPrefix: false
+      serviceId: ad-management
+    authority-management:
+      path: /pc-end/authority/**
+      stripPrefix: false
+      serviceId: authority-management
+    message-management:
+      path: /pc-end/message/**
+      stripPrefix: false
+      serviceId: message-management
+    money-management:
+      path: /pc-end/money/**
+      stripPrefix: false
+      serviceId: money-management
+    one2one-service-management:
+      path: /pc-end/one2one-service/**
+      stripPrefix: false
+      serviceId: one2one-service-management
+    technician-management:
+      path: /pc-end/technician/**
+      stripPrefix: false
+      serviceId: technician-management
+    user-management:
+      path: /pc-end/user/**
+      stripPrefix: false
+      serviceId: user-management
+    #    springcloud组件zipkin链路追踪
+    meishi-zipkin:
+      path: /cloud/zipkin/**
+      stripPrefix: false
+      serviceId: mySpringCloud-zipkin
+    #    第三方服务:支付服务
+    alipay-pay:
+      path: /pay-way/alipay-pay/**
+      stripPrefix: false
+      serviceId: alipayPay
+    bank-card-payment:
+      path: /pay-way/bank-card-payment/**
+      stripPrefix: false
+      serviceId: bankCardPayment
+    weChat-pay:
+      path: /pay-way/weChat-pay/**
+      stripPrefix: false
+      serviceId: weChatPay
+    #    其他服务的路由
     backend-admin:
       path: /backend/admin/**
+      stripPrefix: false
       serviceId: mySpringCloud-web-admin
     backend-posts:
       path: /backend/posts/**
+      stripPrefix: false
       serviceId: mySpringCloud-web-posts
+  sensitive-headers: Cookie,Set-Cookie
+  sensitiveHeaders: '*'
+#eureka client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.0.120:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+    preferIpAddress: true
+#feign/hystrix
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types:
+        - text/xml
+        - application/xml
+        - application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+  hystrix:
+    enabled: true
+#监控器actuator
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info,env
+# swagger配置
+swagger:
+  #扫描SwaggerConfig2配置类api包路径
+  basepackage: com.cn.cl.zuul.config
+  service:
+    #api名称
+    name: zull网关
+    #api描述
+    description: zull网关资源服务
+    #api开发者
+    developer: chenliang
+  auth:
+    #使用哪种认证方式,我这里没填
+    server:
+  is:
+    #是否激活swagger开关
+    enable: true
