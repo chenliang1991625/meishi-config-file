@@ -104,7 +104,7 @@ management:
 # swagger配置,要配置到服务器本地,在git上配置的变量本地服务器获取不到数据
 swagger:
   #扫描SwaggerConfig2配置类配置类包路径
-  basepackage: com.cn.cl.zuul.config
+  basepackage: com.cn.cl
   service:
     #api名称
     name: zull网关
