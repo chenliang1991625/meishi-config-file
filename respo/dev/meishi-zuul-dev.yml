@@ -1,5 +1,6 @@
 server:
   port: 8769
+#springcloud配置
 spring:
   application:
     name: mySpringCloud-zuul
@@ -100,9 +101,9 @@ management:
     web:
       exposure:
         include: refresh,health,info,env
-# swagger配置
+# swagger配置,要配置到服务器本地,在git上配置的变量本地服务器获取不到数据
 swagger:
-  #扫描SwaggerConfig2配置类api包路径
+  #扫描SwaggerConfig2配置类配置类包路径
   basepackage: com.cn.cl.zuul.config
   service:
     #api名称
