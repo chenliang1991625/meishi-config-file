@@ -8,11 +8,6 @@ spring:
     allow-bean-definition-overriding: true
 #    zuul路由规则
 zuul:
-  add-host-header: true
-  ignoredServices: '*'
-  retryable: true
-  sensitive-headers: Cookie,Set-Cookie
-  sensitiveHeaders: '*'
   routes:
     #zuul转到资源order微服务的配置
     order-service:
@@ -78,6 +73,11 @@ zuul:
       path: /backend/posts/**
       stripPrefix: false
       serviceId: mySpringCloud-web-posts
+  add-host-header: true
+  ignoredServices: '*'
+  retryable: true
+  sensitive-headers: Cookie,Set-Cookie
+  sensitiveHeaders: '*'
 #eureka client
 eureka:
   client:
