@@ -14,11 +14,11 @@ zuul:
   sensitive-headers: Cookie,Set-Cookie
   sensitiveHeaders: '*'
   routes:
+    #zuul转到资源order微服务的配置
     order-service:
-#   zuul转到资源order微服务的配置
       path: /order/**
       stripPrefix: false
-#   zuul转到授权uaa微服务的配置
+      #zuul转到授权uaa微服务的配置
     uaa-service:
       path: /uaa/**
       stripPrefix: false
@@ -78,7 +78,6 @@ zuul:
       path: /backend/posts/**
       stripPrefix: false
       serviceId: mySpringCloud-web-posts
-
 #eureka client
 eureka:
   client:
