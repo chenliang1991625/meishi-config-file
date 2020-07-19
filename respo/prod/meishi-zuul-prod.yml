@@ -11,6 +11,14 @@ zuul:
   ignoredServices: '*'
   retryable: true
   routes:
+    #zuul转到资源order微服务的配置
+    order-service:
+      path: /order/**
+      stripPrefix: false
+      #zuul转到授权uaa微服务的配置
+    uaa-service:
+      path: /uaa/**
+      stripPrefix: false
     #    pc-end后台服务的路由
     ad-management:
       path: /pc-end/ad/**
