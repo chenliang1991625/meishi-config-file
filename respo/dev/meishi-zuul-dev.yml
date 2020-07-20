@@ -13,18 +13,44 @@ spring:
 #    zuul路由规则
 zuul:
   routes:
+#    app端
+#    1.用户端
+    technician-side-message:
+      path: /app/technician/message/**
+      stripPrefix: false
+    technician-side-myCenter:
+      path: /app/technician/center/**
+      stripPrefix: false
+    technician-side-order:
+      path: /app/technician/order/**
+      stripPrefix: false
+    meishi-app-home:
+      path: /app/user/homer/**
+      stripPrefix: false
+    meishi-app-my-center:
+      path: /app/user/center/**
+      stripPrefix: false
+    meishi-app-order:
+      path: /app/user/order/**
+      stripPrefix: false
+#    2.技师端
 #    autho2
     #zuul转到授权uaa微服务的配置
     oauth2-security-order:
-      path: /order/**
+      path: /consumer/**
       stripPrefix: false
       #      微服务名
-      serviceId: order-service
+      serviceId: consumer-feign-service
       #zuul转到授权uaa微服务的配置
     oauth2-certified-authorized-server:
       path: /uaa/**
       stripPrefix: false
       serviceId: uaa-service
+      #zuul转到授权user微服务的配置
+    oauth2-security-user:
+      path: /user/**
+      stripPrefix: false
+      serviceId: user-service
 #    pc-end后台服务的路由
     ad-management:
       path: /pc-end/ad/**
@@ -43,7 +69,7 @@ zuul:
       stripPrefix: false
       serviceId: money-management
     one2one-service-management:
-      path: /pc-end/one2one-service/**
+      path: /pc-end/one2one/service/**
       stripPrefix: false
       serviceId: one2one-service-management
     technician-management:
@@ -59,8 +85,20 @@ zuul:
       path: /cloud/zipkin/**
       stripPrefix: false
       serviceId: mySpringCloud-zipkin
+    meishi-config:
+      path: /cloud/config/**
+      stripPrefix: false
+      serviceId: mySpringCloud-config
+    meishi-eureka:
+      path: /cloud/eureka/**
+      stripPrefix: false
+      serviceId: mySpringCloud-eureka
+    meishi-feign-api:
+      path: /cloud/feign/api/**
+      stripPrefix: false
+      serviceId: meishi-feign-api
 #    第三方服务
-    #    1.app端登录
+    #   1.app端登录
     app-front-sso-register-service:
       path: /app/login/**
       stripPrefix: false
@@ -85,7 +123,7 @@ zuul:
     message-push-way:
       path: /push/message/**
       stripPrefix: false
-#    第三方服务:5.支付服务
+    #   5.支付服务
     alipay-pay:
       path: /pay-way/alipay-pay/**
       stripPrefix: false
@@ -98,7 +136,12 @@ zuul:
       path: /pay-way/weChat-pay/**
       stripPrefix: false
       serviceId: weChat-pay
-    #    其他服务的路由
+    #   6.地图服务
+    use-map-way:
+      path: /map/server/**
+      stripPrefix: false
+      serviceId: use-map-way
+   #   其他服务的路由
     backend-admin:
       path: /backend/admin/**
       stripPrefix: false
