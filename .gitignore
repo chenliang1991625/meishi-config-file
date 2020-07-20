@@ -1,0 +1,63 @@
+HELP.md
+target/
+*.class
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+.settings/
+.classpatch
+
+### IntelliJ IDEA ###
+.idea
+/idea/
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+###package ###
+*.war
+*.jar
+*.ear
+
+### temp file ###
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+### system ignore ###
+.DS_Store
+Thumbs.db
+
+### kdiff3 ignore ###
+*.orig
+
+### JRebel ###
+rebel.xml
+
+### Other ###
+logs/
+temp/

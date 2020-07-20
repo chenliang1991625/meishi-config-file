@@ -1,5 +1,10 @@
 server:
   port: 8769
+  tomcat:
+    protocol_header: x-forwarded-proto
+    remote_ip_header: x-forwarded-for
+  use-forward-headers: true
+#springcloud配置
 spring:
   application:
     name: mySpringCloud-zuul
@@ -7,9 +12,6 @@ spring:
     allow-bean-definition-overriding: true
 #    zuul路由规则
 zuul:
-  add-host-header: true
-  ignoredServices: '*'
-  retryable: true
   routes:
     #    autho2
     #zuul转到授权uaa微服务的配置
@@ -79,13 +81,16 @@ zuul:
       path: /backend/posts/**
       stripPrefix: false
       serviceId: mySpringCloud-web-posts
+  add-host-header: true
+  ignoredServices: '*'
+  retryable: true
   sensitive-headers: Cookie,Set-Cookie
   sensitiveHeaders: '*'
 #eureka client
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://192.168.0.120:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
   instance:
     instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
     preferIpAddress: true
@@ -103,6 +108,10 @@ feign:
       enabled: true
   hystrix:
     enabled: true
+#ribbon
+ribbon:
+ReadTimeout: 60000
+ConnectTimeout: 60000
 #监控器actuator
 management:
   endpoint:
@@ -114,7 +123,7 @@ management:
         include: refresh,health,info,env
 # swagger配置,要配置到服务器本地,在git上配置的变量本地服务器获取不到数据
 swagger:
-  #扫描SwaggerConfig2配置类api包路径
+  #扫描SwaggerConfig2配置类配置类包路径
   basepackage: com.cn.cl
   service:
     #api名称
@@ -129,3 +138,26 @@ swagger:
   is:
     #是否激活swagger开关
     enable: true
+#   其它配置
+#   日志级别
+logging:
+  level:
+    org:
+      springframework: info
+    root: info
+  #   freemarker
+  freemarker:
+    charset: UTF-8
+    content-type: text/html
+    enabled: true
+    request-context-attribute: rc
+    suffix: .html
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false

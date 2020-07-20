@@ -1,5 +1,9 @@
 server:
   port: 8769
+  tomcat:
+    protocol_header: x-forwarded-proto
+    remote_ip_header: x-forwarded-for
+  use-forward-headers: true
 #springcloud配置
 spring:
   application:
@@ -55,19 +59,45 @@ zuul:
       path: /cloud/zipkin/**
       stripPrefix: false
       serviceId: mySpringCloud-zipkin
-#    第三方服务:支付服务
+#    第三方服务
+    #    1.app端登录
+    app-front-sso-register-service:
+      path: /app/login/**
+      stripPrefix: false
+    #   2.人脸识别
+    face-recognition-way:
+      path: /app/face-recognition/**
+      stripPrefix: false
+    #   3.第三方登录服务
+    #   1)apple id登录
+    apple-id-mode:
+      path: /apple/**
+      stripPrefix: false
+    #   2)weChat-mode登录
+    weChat-mode:
+      path: /wechat/**
+      stripPrefix: false
+    #   3)qq登录
+    qq-mode:
+      path: /qq/**
+      stripPrefix: false
+    #   4.消息推送
+    message-push-way:
+      path: /push/message/**
+      stripPrefix: false
+#    第三方服务:5.支付服务
     alipay-pay:
       path: /pay-way/alipay-pay/**
       stripPrefix: false
-      serviceId: alipayPay
+      serviceId: alipay-pay
     bank-card-payment:
       path: /pay-way/bank-card-payment/**
       stripPrefix: false
-      serviceId: bankCardPayment
+      serviceId: bank-card-payment
     weChat-pay:
       path: /pay-way/weChat-pay/**
       stripPrefix: false
-      serviceId: weChatPay
+      serviceId: weChat-pay
     #    其他服务的路由
     backend-admin:
       path: /backend/admin/**
@@ -104,6 +134,10 @@ feign:
       enabled: true
   hystrix:
     enabled: true
+#ribbon
+ribbon:
+ReadTimeout: 60000
+ConnectTimeout: 60000
 #监控器actuator
 management:
   endpoint:
@@ -130,3 +164,26 @@ swagger:
   is:
     #是否激活swagger开关
     enable: true
+#   其它配置
+#   日志级别
+logging:
+  level:
+    org:
+      springframework: info
+    root: info
+#   freemarker
+  freemarker:
+    charset: UTF-8
+    content-type: text/html
+    enabled: true
+    request-context-attribute: rc
+    suffix: .html
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
